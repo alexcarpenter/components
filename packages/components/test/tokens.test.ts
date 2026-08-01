@@ -44,9 +44,7 @@ describe("color tokens", () => {
   });
 
   it("matches the pinned Radix light and dark scales", () => {
-    for (const [family, [light, dark, lightAlpha, darkAlpha]] of Object.entries(
-      scales,
-    )) {
+    for (const [family, [light, dark, lightAlpha, darkAlpha]] of Object.entries(scales)) {
       const radixFamily =
         family === "neutral"
           ? "gray"
@@ -59,14 +57,10 @@ describe("color tokens", () => {
                 : "green";
 
       for (let step = 1; step <= 12; step += 1) {
-        expect(
-          colorDefaults[`${family}${step}` as keyof typeof colorDefaults],
-        ).toBe(
+        expect(colorDefaults[`${family}${step}` as keyof typeof colorDefaults]).toBe(
           `light-dark(${light[`${radixFamily}${step}` as keyof typeof light]}, ${dark[`${radixFamily}${step}` as keyof typeof dark]})`,
         );
-        expect(
-          colorDefaults[`${family}A${step}` as keyof typeof colorDefaults],
-        ).toBe(
+        expect(colorDefaults[`${family}A${step}` as keyof typeof colorDefaults]).toBe(
           `light-dark(${lightAlpha[`${radixFamily}A${step}` as keyof typeof lightAlpha]}, ${darkAlpha[`${radixFamily}A${step}` as keyof typeof darkAlpha]})`,
         );
       }

@@ -6,9 +6,7 @@ import { dataAttributes } from "../src/utils/data-attributes";
 
 describe("dataAttributes", () => {
   it("reflects values as string data attributes", () => {
-    expect(
-      dataAttributes({ size: "md", level: 2, interactive: false }),
-    ).toEqual({
+    expect(dataAttributes({ size: "md", level: 2, interactive: false })).toEqual({
       "data-size": "md",
       "data-level": "2",
       "data-interactive": "false",
@@ -22,9 +20,7 @@ describe("dataAttributes", () => {
   });
 
   it("omits nullish values", () => {
-    expect(
-      dataAttributes({ variant: "filled", color: null, shape: undefined }),
-    ).toEqual({
+    expect(dataAttributes({ variant: "filled", color: null, shape: undefined })).toEqual({
       "data-variant": "filled",
     });
   });

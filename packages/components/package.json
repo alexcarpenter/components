@@ -11,29 +11,23 @@
     "url": "git+https://github.com/alexcarpenter/components.git",
     "directory": "packages/components"
   },
-  "type": "module",
-  "sideEffects": false,
   "files": [
     "src",
     "README.md"
   ],
-  "publishConfig": {
-    "access": "public",
-    "registry": "https://registry.npmjs.org/"
-  },
+  "type": "module",
+  "sideEffects": false,
   "exports": {
     "./button": "./src/button/index.tsx",
     "./tokens.stylex": "./src/tokens.stylex.ts",
     "./package.json": "./package.json"
   },
-  "scripts": {
-    "lint": "tsc --noEmit",
-    "typecheck": "tsc --noEmit"
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   },
-  "peerDependencies": {
-    "@stylexjs/stylex": "^0.19.0",
-    "react": ">=19.0.0",
-    "react-dom": ">=19.0.0"
+  "scripts": {
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@base-ui/react": "^1.0.0"
@@ -46,5 +40,10 @@
     "react": "catalog:",
     "react-dom": "catalog:",
     "typescript": "catalog:"
+  },
+  "peerDependencies": {
+    "@stylexjs/stylex": "^0.19.0",
+    "react": ">=19.0.0",
+    "react-dom": ">=19.0.0"
   }
 }

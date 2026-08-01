@@ -9,9 +9,7 @@ describe("Button", () => {
   it("renders an accessible native button", () => {
     render(<Button>Save changes</Button>);
 
-    expect(
-      screen.getByRole("button", { name: "Save changes" }),
-    ).toHaveAttribute("type", "button");
+    expect(screen.getByRole("button", { name: "Save changes" })).toHaveAttribute("type", "button");
   });
 
   it("reflects default visual props as data attributes", () => {
@@ -64,10 +62,7 @@ describe("Button", () => {
     expect(screen.getByRole("button")).toHaveClass("consumer");
 
     rerender(
-      <Button
-        disabled
-        className={(state) => (state.disabled ? "is-disabled" : "is-enabled")}
-      >
+      <Button disabled className={(state) => (state.disabled ? "is-disabled" : "is-enabled")}>
         Styled
       </Button>,
     );
