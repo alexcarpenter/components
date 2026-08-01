@@ -4,6 +4,8 @@
   "scripts": {
     "dev": "pnpm --filter docs dev",
     "build": "pnpm --filter docs build",
+    "storybook": "pnpm --filter @repo/storybook dev",
+    "storybook:build": "pnpm --filter @repo/storybook build",
     "prepare": "husky",
     "changeset": "changeset",
     "changeset:status": "changeset status",
