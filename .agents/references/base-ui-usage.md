@@ -8,6 +8,7 @@ Sources:
 
 - [Base UI — About](https://base-ui.com/react/overview/about)
 - [Base UI — Accessibility](https://base-ui.com/react/overview/accessibility)
+- [Base UI — Animation](https://base-ui.com/react/handbook/animation)
 - [Base UI — Composition](https://base-ui.com/react/handbook/composition)
 
 ## Choose a primitive
@@ -44,6 +45,41 @@ Sources:
 - Merge generated and consumer props without dropping class names, styles,
   refs, or event handlers. Use Base UI's composition utilities when manual prop
   merging is required.
+
+## Animation
+
+- Follow Base UI's animation guide before adding motion to a component.
+- Prefer CSS transitions for enter and exit motion. Transitions can reverse
+  smoothly when a user interrupts an opening or closing animation.
+- Use `[data-starting-style]` for the transition's initial state and
+  `[data-ending-style]` for its final state. Let Base UI coordinate unmounting
+  after the transition completes.
+- Use CSS variables exposed by the component, such as `--transform-origin`,
+  when they affect the animation.
+- Respect reduced-motion preferences when motion is not essential.
+
+Write the transition in StyleX. Use `:is()` to apply the same value for both
+Base UI state attributes:
+
+```tsx
+import * as stylex from "@stylexjs/stylex";
+
+const styles = stylex.create({
+  popup: {
+    transformOrigin: "var(--transform-origin)",
+    transitionDuration: "150ms",
+    transitionProperty: "transform, opacity",
+    opacity: {
+      default: 1,
+      ":is([data-starting-style], [data-ending-style])": 0,
+    },
+    transform: {
+      default: "scale(1)",
+      ":is([data-starting-style], [data-ending-style])": "scale(0.9)",
+    },
+  },
+});
+```
 
 ## Accessibility
 
