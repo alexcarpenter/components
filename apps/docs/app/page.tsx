@@ -1,8 +1,7 @@
 import { Button } from "@alexcarpenter/components/button";
 import * as stylex from "@stylexjs/stylex";
 
-const install =
-  "pnpm add @alexcarpenter/components @base-ui/react @stylexjs/stylex";
+const install = "pnpm add @alexcarpenter/components @base-ui/react @stylexjs/stylex";
 
 export default function Home() {
   return (
@@ -13,10 +12,7 @@ export default function Home() {
           Components
         </a>
         <nav aria-label="Primary" {...stylex.props(styles.nav)}>
-          <a
-            href="#button"
-            {...stylex.props(styles.navLink, styles.activeLink)}
-          >
+          <a href="#button" {...stylex.props(styles.navLink, styles.activeLink)}>
             Docs
           </a>
           <a href="https://github.com" {...stylex.props(styles.navLink)}>
@@ -43,12 +39,10 @@ export default function Home() {
         <main id="main" {...stylex.props(styles.main)}>
           <section id="overview" {...stylex.props(styles.intro)}>
             <p {...stylex.props(styles.eyebrow)}>Component library</p>
-            <h1 {...stylex.props(styles.heading)}>
-              Quiet building blocks for React.
-            </h1>
+            <h1 {...stylex.props(styles.heading)}>Quiet building blocks for React.</h1>
             <p {...stylex.props(styles.lede)}>
-              Accessible behavior from Base UI, static atomic styles from
-              StyleX, and a source-first package that stays easy to extend.
+              Accessible behavior from Base UI, static atomic styles from StyleX, and a source-first
+              package that stays easy to extend.
             </p>
           </section>
 
@@ -64,8 +58,7 @@ export default function Home() {
               <div>
                 <h2 {...stylex.props(styles.sectionHeading)}>Button</h2>
                 <p {...stylex.props(styles.description)}>
-                  Triggers an action with keyboard and disabled-state behavior
-                  from Base UI.
+                  Triggers an action with keyboard and disabled-state behavior from Base UI.
                 </p>
               </div>
               <span {...stylex.props(styles.status)}>Stable</span>
@@ -100,8 +93,7 @@ export default function Home() {
 
 const styles = stylex.create({
   shell: {
-    fontFamily:
-      "Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+    fontFamily: "Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
     minHeight: "100vh",
   },
   header: {

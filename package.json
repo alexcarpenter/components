@@ -1,7 +1,6 @@
 {
   "name": "component-library",
   "private": true,
-  "packageManager": "pnpm@11.18.0",
   "scripts": {
     "dev": "pnpm --filter docs dev",
     "build": "pnpm --filter docs build",
@@ -11,9 +10,9 @@
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",
     "typecheck": "pnpm -r typecheck",
-    "lint": "pnpm -r lint",
-    "format": "prettier --write .",
-    "format:check": "prettier --check .",
+    "lint": "oxlint .",
+    "format": "oxfmt --write .",
+    "format:check": "oxfmt --check .",
     "version-packages": "changeset version"
   },
   "devDependencies": {
@@ -25,9 +24,11 @@
     "@vitejs/plugin-react": "^5.2.0",
     "@vitest/coverage-v8": "^4.1.10",
     "jsdom": "^30.0.1",
-    "prettier": "^3.6.2",
+    "oxfmt": "^0.61.0",
+    "oxlint": "^1.76.0",
     "typescript": "^5.9.2",
     "vite": "^7.3.6",
     "vitest": "^4.1.10"
-  }
+  },
+  "packageManager": "pnpm@11.18.0"
 }
