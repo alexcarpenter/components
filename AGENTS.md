@@ -32,3 +32,15 @@ Before adding or changing component colors, read
 - Select a scale step according to the documented interaction or content role,
   not merely because it looks close.
 - Preserve the established semantic families and their Radix mappings.
+
+## Spacing and radius
+
+Before adding or changing component spacing or border radii, read
+[`.agents/references/spacing-radius-usage.md`](.agents/references/spacing-radius-usage.md).
+
+- Use `spacingVars` and `radiusVars` from
+  `packages/components/src/tokens.stylex.ts` when the intended value exists in
+  the token scales.
+- Keep spacing values in rem and preserve the 0.25rem-based numeric scale.
+- Access numeric spacing keys and radius keys that begin with a number using
+  bracket notation, such as `spacingVars["1.5"]` and `radiusVars["2xl"]`.
