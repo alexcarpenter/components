@@ -11,6 +11,8 @@
 - Formatting and linting of changed files run automatically through
   `nano-staged` in the Codex Stop hook and the Husky pre-commit hook.
 - Run `pnpm lint` and `pnpm format:check` for full-repository verification.
+- Keep pull request descriptions concise and limited to a summary. Do not add a
+  verification section.
 
 ## Color
 
