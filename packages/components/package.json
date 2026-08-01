@@ -2,12 +2,25 @@
   "name": "@alexcarpenter/components",
   "version": "0.0.0",
   "description": "Accessible React components built with Base UI and StyleX.",
+  "homepage": "https://github.com/alexcarpenter/components#readme",
+  "bugs": {
+    "url": "https://github.com/alexcarpenter/components/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexcarpenter/components.git",
+    "directory": "packages/components"
+  },
   "type": "module",
   "sideEffects": false,
   "files": [
     "src",
     "README.md"
   ],
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
   "exports": {
     "./button": "./src/button/index.tsx",
     "./tokens.stylex": "./src/tokens.stylex.ts",

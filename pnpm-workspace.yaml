@@ -2,6 +2,8 @@ packages:
   - apps/*
   - packages/*
 
+minimumReleaseAge: 4320
+
 catalog:
   "@stylexjs/stylex": ^0.19.0
   "@types/react": ^19.1.9

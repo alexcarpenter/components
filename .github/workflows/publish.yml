@@ -1,0 +1,74 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions: {}
+
+jobs:
+  validate:
+    name: Validate release
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        with:
+          persist-credentials: false
+
+      - name: Set up Node.js
+        uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6.4.0
+        with:
+          node-version: 24
+          package-manager-cache: false
+
+      - name: Enable pnpm
+        run: corepack enable && corepack install
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile --ignore-scripts
+
+      - name: Run validation suite
+        run: pnpm test && pnpm typecheck && pnpm lint && pnpm format:check && pnpm build
+
+  publish:
+    name: Stage npm package
+    needs: validate
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        with:
+          persist-credentials: false
+
+      - name: Set up Node.js
+        uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6.4.0
+        with:
+          node-version: 24
+          registry-url: https://registry.npmjs.org/
+          package-manager-cache: false
+
+      - name: Verify tag matches package version
+        working-directory: packages/components
+        run: |
+          package_version="$(node --print "require('./package.json').version")"
+          if [ "${GITHUB_REF_NAME}" != "v${package_version}" ]; then
+            echo "Tag ${GITHUB_REF_NAME} does not match package version ${package_version}." >&2
+            exit 1
+          fi
+
+      - name: Inspect package contents
+        working-directory: packages/components
+        run: npm pack --dry-run --ignore-scripts
+
+      - name: Stage package on npm
+        working-directory: packages/components
+        run: npm stage publish --ignore-scripts
