@@ -11,6 +11,8 @@
 - Formatting and linting of changed files run automatically through
   `nano-staged` in the Codex Stop hook and the Husky pre-commit hook.
 - Run `pnpm lint` and `pnpm format:check` for full-repository verification.
+- Use Conventional Commits format for pull request titles, such as
+  `chore(repo): add agent lint and format hooks`.
 - Keep pull request descriptions concise and limited to a summary. Do not add a
   verification section.
 
