@@ -3,10 +3,10 @@
 import { Button as BaseButton } from "@base-ui/react/button";
 import * as stylex from "@stylexjs/stylex";
 
-import { dataAttributes } from "../utils/data-attributes";
-import { mergeClassNames } from "../utils/merge-class-names";
+import { stylexRenderProps, type StyleXRenderStyle } from "../utils/stylex-render-props";
 
-export type ButtonProps = BaseButton.Props & {
+export type ButtonProps = Omit<BaseButton.Props, "className" | "style"> & {
+  sx?: StyleXRenderStyle<BaseButton.State>;
   size?: "sm" | "md" | "lg";
   variant?: "filled" | "outline" | "ghost" | "link";
   color?: "primary" | "neutral" | "negative";
@@ -14,24 +14,31 @@ export type ButtonProps = BaseButton.Props & {
 };
 
 export function Button({
-  className,
   color = "primary",
   shape = "default",
   size = "md",
   variant = "filled",
+  sx,
   ...props
 }: ButtonProps) {
-  const generatedClassName = stylex.props(styles.root).className;
-
   return (
     <BaseButton
       {...props}
-      {...dataAttributes({ size, variant, color, shape })}
-      className={mergeClassNames(generatedClassName, className)}
+      data-color={color}
+      data-shape={shape}
+      data-size={size}
+      data-variant={variant}
+      {...stylexRenderProps(styles.base, sx)}
     />
   );
 }
 
 const styles = stylex.create({
-  root: {},
+  base: {
+    appearance: "none",
+    backgroundColor: "transparent",
+    boxSizing: "border-box",
+    margin: 0,
+    padding: 0,
+  },
 });

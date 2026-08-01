@@ -1,9 +1,16 @@
 import { createRef } from "react";
+import * as stylex from "@stylexjs/stylex";
 import { describe, expect, it, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
 import { Button } from "./index";
+
+const styles = stylex.create({
+  rendered: {
+    display: "inline-flex",
+  },
+});
 
 describe("Button", () => {
   it("renders an accessible native button", () => {
@@ -55,6 +62,21 @@ describe("Button", () => {
     );
     await user.click(screen.getByRole("button"));
     expect(onClick).toHaveBeenCalledTimes(1);
+  });
+
+  it("forwards state-aware sx classes through the render prop", () => {
+    const sx = vi.fn(() => styles.rendered);
+
+    render(
+      <Button nativeButton={false} render={<span />} sx={sx}>
+        Save
+      </Button>,
+    );
+
+    expect(screen.getByRole("button", { name: "Save" })).toHaveClass(
+      stylex.props(styles.rendered).className as string,
+    );
+    expect(sx).toHaveBeenCalledWith({ disabled: false });
   });
 
   it("forwards native props and refs", () => {

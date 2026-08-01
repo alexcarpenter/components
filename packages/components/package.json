@@ -20,7 +20,7 @@
   "type": "module",
   "sideEffects": false,
   "exports": {
-    "./button": "./src/button/index.tsx",
+    "./button": "./src/button/index.ts",
     "./tokens.stylex": "./src/tokens.stylex.ts",
     "./package.json": "./package.json"
   },
