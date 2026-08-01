@@ -5,6 +5,7 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
 import { Button } from "./index";
+import type { ButtonState } from "./index";
 
 const styles = stylex.create({
   rendered: {
@@ -17,34 +18,6 @@ describe("Button", () => {
     render(<Button>Save changes</Button>);
 
     expect(screen.getByRole("button", { name: "Save changes" })).toHaveAttribute("type", "button");
-  });
-
-  it("reflects default visual props as data attributes", () => {
-    render(<Button>Default</Button>);
-
-    const button = screen.getByRole("button");
-    expect(button).toHaveAttribute("data-size", "md");
-    expect(button).toHaveAttribute("data-variant", "filled");
-    expect(button).toHaveAttribute("data-color", "primary");
-    expect(button).toHaveAttribute("data-shape", "default");
-  });
-
-  it("reflects overridden visual props without leaking native attributes", () => {
-    render(
-      <Button size="lg" variant="outline" color="negative" shape="circle">
-        Delete
-      </Button>,
-    );
-
-    const button = screen.getByRole("button");
-    expect(button).toHaveAttribute("data-size", "lg");
-    expect(button).toHaveAttribute("data-variant", "outline");
-    expect(button).toHaveAttribute("data-color", "negative");
-    expect(button).toHaveAttribute("data-shape", "circle");
-    expect(button).not.toHaveAttribute("size");
-    expect(button).not.toHaveAttribute("variant");
-    expect(button).not.toHaveAttribute("color");
-    expect(button).not.toHaveAttribute("shape");
   });
 
   it("handles clicks and suppresses them when disabled", async () => {
@@ -65,7 +38,7 @@ describe("Button", () => {
   });
 
   it("forwards state-aware sx classes through the render prop", () => {
-    const sx = vi.fn(() => styles.rendered);
+    const sx = vi.fn((_state: ButtonState) => styles.rendered);
 
     render(
       <Button nativeButton={false} render={<span />} sx={sx}>
@@ -76,7 +49,13 @@ describe("Button", () => {
     expect(screen.getByRole("button", { name: "Save" })).toHaveClass(
       stylex.props(styles.rendered).className as string,
     );
-    expect(sx).toHaveBeenCalledWith({ disabled: false });
+    expect(sx).toHaveBeenCalledWith({
+      color: "primary",
+      disabled: false,
+      shape: "default",
+      size: "md",
+      variant: "filled",
+    });
   });
 
   it("forwards native props and refs", () => {

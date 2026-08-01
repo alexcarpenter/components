@@ -5,12 +5,24 @@ import * as stylex from "@stylexjs/stylex";
 
 import { stylexRenderProps, type StyleXRenderStyle } from "../utils/stylex-render-props";
 
+type ButtonColor = "primary" | "neutral" | "negative";
+type ButtonShape = "default" | "square" | "circle";
+type ButtonSize = "sm" | "md" | "lg";
+type ButtonVariant = "filled" | "outline" | "ghost" | "link";
+
+export type ButtonState = BaseButton.State & {
+  color: ButtonColor;
+  shape: ButtonShape;
+  size: ButtonSize;
+  variant: ButtonVariant;
+};
+
 export type ButtonProps = Omit<BaseButton.Props, "className" | "style"> & {
-  sx?: StyleXRenderStyle<BaseButton.State>;
-  size?: "sm" | "md" | "lg";
-  variant?: "filled" | "outline" | "ghost" | "link";
-  color?: "primary" | "neutral" | "negative";
-  shape?: "default" | "square" | "circle";
+  sx?: StyleXRenderStyle<ButtonState>;
+  size?: ButtonSize;
+  variant?: ButtonVariant;
+  color?: ButtonColor;
+  shape?: ButtonShape;
 };
 
 export function Button({
@@ -21,16 +33,11 @@ export function Button({
   sx,
   ...props
 }: ButtonProps) {
-  return (
-    <BaseButton
-      {...props}
-      data-color={color}
-      data-shape={shape}
-      data-size={size}
-      data-variant={variant}
-      {...stylexRenderProps(styles.base, sx)}
-    />
+  const renderProps = stylexRenderProps<BaseButton.State>(styles.base, (state) =>
+    typeof sx === "function" ? sx({ ...state, color, shape, size, variant }) : sx,
   );
+
+  return <BaseButton {...props} {...renderProps} />;
 }
 
 const styles = stylex.create({
