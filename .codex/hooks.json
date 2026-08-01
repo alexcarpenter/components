@@ -1,0 +1,17 @@
+{
+  "description": "Run fast formatting and lint checks before Codex stops.",
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$(git rev-parse --show-toplevel)/.codex/hooks/nano-staged\"",
+            "statusMessage": "Formatting and linting changed files",
+            "timeout": 30
+          }
+        ]
+      }
+    ]
+  }
+}
