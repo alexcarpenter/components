@@ -4,10 +4,5 @@
     "jsx": "react-jsx",
     "types": ["node"]
   },
-  "include": [
-    ".storybook/**/*.ts",
-    "stories/**/*.ts",
-    "stories/**/*.tsx",
-    "vite-storybook.config.ts"
-  ]
+  "include": [".storybook/**/*.ts", "stories/**/*.ts", "stories/**/*.tsx"]
 }
