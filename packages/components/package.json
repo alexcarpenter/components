@@ -13,6 +13,8 @@
   },
   "files": [
     "src",
+    "!src/**/*.stories.*",
+    "!src/**/*.test.*",
     "README.md"
   ],
   "type": "module",
@@ -34,6 +36,7 @@
   },
   "devDependencies": {
     "@radix-ui/colors": "3.0.0",
+    "@storybook/react-vite": "^10.5.5",
     "@stylexjs/stylex": "catalog:",
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",

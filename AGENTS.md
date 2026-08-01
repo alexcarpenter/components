@@ -21,6 +21,13 @@ Before adding or changing a component backed by Base UI, read
 - Keep pull request descriptions concise and limited to a summary. Do not add a
   verification section.
 
+## Component files
+
+- Colocate component stories and tests with their source under
+  `packages/components/src` using `*.stories.tsx` and `*.test.tsx` filenames.
+- Do not create separate top-level story or test directories for component
+  coverage.
+
 ## Color
 
 Before adding or changing component colors, read

@@ -22,8 +22,10 @@ Start Storybook to develop components with interactive prop controls:
 pnpm storybook
 ```
 
-The app runs at `http://localhost:6006`. Create component stories in
-`apps/storybook/stories` and expose supported variants through Storybook args.
+The app runs at `http://localhost:6006`. Colocate each component's
+`*.stories.tsx` and `*.test.tsx` files with its source in
+`packages/components/src`, and expose supported variants through Storybook
+args.
 
 ## Making changes
 

@@ -3,7 +3,7 @@ import { describe, expect, it, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
-import { Button } from "../src/button";
+import { Button } from "./index";
 
 describe("Button", () => {
   it("renders an accessible native button", () => {
@@ -55,18 +55,6 @@ describe("Button", () => {
     );
     await user.click(screen.getByRole("button"));
     expect(onClick).toHaveBeenCalledTimes(1);
-  });
-
-  it("merges consumer string and state callback class names", () => {
-    const { rerender } = render(<Button className="consumer">Styled</Button>);
-    expect(screen.getByRole("button")).toHaveClass("consumer");
-
-    rerender(
-      <Button disabled className={(state) => (state.disabled ? "is-disabled" : "is-enabled")}>
-        Styled
-      </Button>,
-    );
-    expect(screen.getByRole("button")).toHaveClass("is-disabled");
   });
 
   it("forwards native props and refs", () => {

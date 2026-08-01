@@ -6,7 +6,7 @@ import { mergeConfig } from "vite";
 const rootDir = fileURLToPath(new URL("../../..", import.meta.url));
 
 const config: StorybookConfig = {
-  stories: ["../stories/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
+  stories: ["../../../packages/components/src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
   addons: ["@storybook/addon-a11y", "@storybook/addon-docs"],
   framework: {
     name: "@storybook/react-vite",
