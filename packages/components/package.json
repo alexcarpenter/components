@@ -13,12 +13,14 @@
   },
   "files": [
     "src",
+    "!src/**/*.stories.*",
+    "!src/**/*.test.*",
     "README.md"
   ],
   "type": "module",
   "sideEffects": false,
   "exports": {
-    "./button": "./src/button/index.tsx",
+    "./button": "./src/button/index.ts",
     "./tokens.stylex": "./src/tokens.stylex.ts",
     "./package.json": "./package.json"
   },
@@ -34,6 +36,7 @@
   },
   "devDependencies": {
     "@radix-ui/colors": "3.0.0",
+    "@storybook/react-vite": "^10.5.5",
     "@stylexjs/stylex": "catalog:",
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",

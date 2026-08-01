@@ -16,6 +16,17 @@ Start the Next.js documentation site with:
 pnpm dev
 ```
 
+Start Storybook to develop components with interactive prop controls:
+
+```bash
+pnpm storybook
+```
+
+The app runs at `http://localhost:6006`. Colocate each component's
+`*.stories.tsx` and `*.test.tsx` files with its source in
+`packages/components/src`, and expose supported variants through Storybook
+args.
+
 ## Making changes
 
 Create a focused branch and keep component code, tests, and documentation in

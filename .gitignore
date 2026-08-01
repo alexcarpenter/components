@@ -3,5 +3,6 @@ node_modules
 .next
 dist
 coverage
+storybook-static
 *.tsbuildinfo
 .DS_Store

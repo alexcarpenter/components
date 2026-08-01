@@ -22,7 +22,7 @@ import {
 } from "@radix-ui/colors";
 import { describe, expect, it } from "vitest";
 
-import { colorDefaults, radiusDefaults, spacingDefaults } from "../src/tokens.stylex";
+import { colorDefaults, radiusDefaults, spacingDefaults } from "./tokens.stylex";
 
 describe("spacing tokens", () => {
   it("defines the selected 0.25rem-based scale", () => {
@@ -62,7 +62,6 @@ describe("radius tokens", () => {
     });
   });
 });
-
 const scales = {
   neutral: [gray, grayDark, grayA, grayDarkA],
   primary: [blue, blueDark, blueA, blueDarkA],
