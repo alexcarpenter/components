@@ -22,7 +22,46 @@ import {
 } from "@radix-ui/colors";
 import { describe, expect, it } from "vitest";
 
-import { colorDefaults } from "../src/tokens.stylex";
+import { colorDefaults, radiusDefaults, spacingDefaults } from "../src/tokens.stylex";
+
+describe("spacing tokens", () => {
+  it("defines the selected 0.25rem-based scale", () => {
+    expect(spacingDefaults).toEqual({
+      "0": "0rem",
+      "0.5": "0.125rem",
+      "1": "0.25rem",
+      "1.5": "0.375rem",
+      "2": "0.5rem",
+      "3": "0.75rem",
+      "4": "1rem",
+      "5": "1.25rem",
+      "6": "1.5rem",
+      "7": "1.75rem",
+      "8": "2rem",
+      "9": "2.25rem",
+      "10": "2.5rem",
+      "11": "2.75rem",
+      "12": "3rem",
+    });
+  });
+});
+
+describe("radius tokens", () => {
+  it("defines the radius scale", () => {
+    expect(radiusDefaults).toEqual({
+      xs: "0.125rem",
+      sm: "0.25rem",
+      md: "0.375rem",
+      lg: "0.5rem",
+      xl: "0.75rem",
+      "2xl": "1rem",
+      "3xl": "1.5rem",
+      "4xl": "2rem",
+      none: "0",
+      full: "calc(infinity * 1px)",
+    });
+  });
+});
 
 const scales = {
   neutral: [gray, grayDark, grayA, grayDarkA],
