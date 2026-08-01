@@ -26,14 +26,27 @@ After the package exists, configure its npm package settings:
 
 Configure GitHub repository protection:
 
-1. In <https://github.com/alexcarpenter/components/settings/rules>, add an active tag ruleset that includes `v*`, restricts tag creation, and allows only repository administrators to bypass it.
-2. Enable immutable releases in the repository settings.
-3. Protect `main` and require the `Validate` and `Zizmor` checks before merging.
+1. In <https://github.com/alexcarpenter/components/settings/actions>, enable **Allow GitHub Actions to create and approve pull requests** so the Changesets workflow can maintain the release pull request.
+2. In <https://github.com/alexcarpenter/components/settings/rules>, add an active tag ruleset that includes `v*`, restricts tag creation, and allows only repository administrators to bypass it.
+3. Enable immutable releases in the repository settings.
+4. Protect `main` and require the `Validate` and `Zizmor` checks before merging.
+
+## Recording a change
+
+For a pull request that changes the published package:
+
+1. Run `pnpm changeset`.
+2. Select `@alexcarpenter/components` and the appropriate semantic version bump.
+3. Write a concise, user-facing summary and commit the generated `.changeset/*.md` file with the pull request.
+
+After changesets reach `main`, the `Changesets` workflow opens or updates a
+release pull request containing the package version and changelog updates. It
+does not have npm credentials or permission to publish.
 
 ## Publishing a release
 
-1. Update `packages/components/package.json` and any changelog for the release.
-2. Commit and merge the release changes to `main`.
+1. Review and merge the Changesets release pull request.
+2. Confirm the version in `packages/components/package.json` on `main`.
 3. Create a signed tag matching the package version and push it:
 
    ```bash
