@@ -39,6 +39,7 @@
     "@base-ui/react": "^1.0.0"
   },
   "devDependencies": {
+    "@radix-ui/colors": "3.0.0",
     "@stylexjs/stylex": "catalog:",
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
