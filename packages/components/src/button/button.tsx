@@ -41,11 +41,5 @@ export function Button({
 }
 
 const styles = stylex.create({
-  base: {
-    appearance: "none",
-    backgroundColor: "transparent",
-    boxSizing: "border-box",
-    margin: 0,
-    padding: 0,
-  },
+  base: {},
 });
