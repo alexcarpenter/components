@@ -1,5 +1,10 @@
 # Repository guidance
 
+## Base UI
+
+Before adding or changing a component backed by Base UI, read
+[`.agents/references/base-ui-usage.md`](.agents/references/base-ui-usage.md).
+
 ## Tooling
 
 - Use the pnpm version declared by `packageManager` in `package.json`.
