@@ -1,0 +1,17 @@
+#!/bin/sh
+
+input=$(cat)
+root=$(git rev-parse --show-toplevel) || exit 1
+cd "$root" || exit 1
+nano_staged="$root/node_modules/.bin/nano-staged"
+
+# A Stop hook may continue Codex once. On that continuation, report any
+# remaining errors without creating an infinite agent loop.
+if printf '%s' "$input" | grep -q '"stop_hook_active"[[:space:]]*:[[:space:]]*true'; then
+  "$nano_staged" --unstaged --quiet --bail || true
+  printf '%s\n' '{"continue":true}'
+  exit 0
+fi
+
+"$nano_staged" --unstaged --quiet --bail || exit 2
+printf '%s\n' '{"continue":true}'
