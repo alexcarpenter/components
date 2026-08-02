@@ -15,7 +15,9 @@ module.exports = {
         },
         plugins: babelConfig.plugins,
       },
-      useCSSLayers: true,
+      useCSSLayers: {
+        before: ["reset"],
+      },
     },
     autoprefixer: {},
   },

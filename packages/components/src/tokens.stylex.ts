@@ -9,6 +9,7 @@ export const spacingDefaults = {
   "1": "0.25rem",
   "1.5": "0.375rem",
   "2": "0.5rem",
+  "2.5": "0.625rem",
   "3": "0.75rem",
   "4": "1rem",
   "5": "1.25rem",
@@ -38,6 +39,25 @@ export const radiusDefaults = {
   full: "calc(infinity * 1px)",
 } as const;
 export const radiusVars = stylex.defineVars(radiusDefaults);
+
+/**
+ * Typography scale.
+ */
+const typeScaleDefaults = {
+  "xs-size": "0.75rem",
+  "xs-leading": "calc(1 / 0.75)",
+  "sm-size": "0.875rem",
+  "sm-leading": "calc(1.25 / 0.875)",
+  "base-size": "1rem",
+  "base-leading": "calc(1.5 / 1)",
+  "lg-size": "1.125rem",
+  "lg-leading": "calc(1.75 / 1.125)",
+  "xl-size": "1.25rem",
+  "xl-leading": "calc(1.75 / 1.25)",
+  "2xl-size": "1.5rem",
+  "2xl-leading": "calc(2 / 1.5)",
+} as const;
+export const typeScaleVars = stylex.defineVars(typeScaleDefaults);
 
 /**
  * Semantic color scales backed by Radix Colors 3.0.0.
