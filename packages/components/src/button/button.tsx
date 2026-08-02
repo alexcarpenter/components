@@ -80,7 +80,7 @@ const colorVariantStyles = stylex.create({
     backgroundColor: {
       default: "blue",
       ":hover": {
-        default: "null",
+        default: null,
         "@media (hover: hover)": `color-mix(in srgb, blue, white 20%)`,
       },
       ":active": `color-mix(in srgb, blue, white 30%)`,
@@ -91,7 +91,7 @@ const colorVariantStyles = stylex.create({
     backgroundColor: {
       default: "lightGray",
       ":hover": {
-        default: "null",
+        default: null,
         "@media (hover: hover)": `color-mix(in srgb, lightGray, black 20%)`,
       },
       ":active": `color-mix(in srgb, lightGray, black 30%)`,
@@ -102,7 +102,7 @@ const colorVariantStyles = stylex.create({
     backgroundColor: {
       default: "red",
       ":hover": {
-        default: "null",
+        default: null,
         "@media (hover: hover)": `color-mix(in srgb, red, white 20%)`,
       },
       ":active": `color-mix(in srgb, red, white 30%)`,

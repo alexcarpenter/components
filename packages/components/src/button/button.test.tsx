@@ -1,7 +1,7 @@
 import { createRef } from "react";
 import * as stylex from "@stylexjs/stylex";
 import { describe, expect, it, vi } from "vitest";
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
 import { Button } from "./index";
@@ -33,7 +33,7 @@ describe("Button", () => {
         Submit
       </Button>,
     );
-    await user.click(screen.getByRole("button"));
+    fireEvent.click(screen.getByRole("button"));
     expect(onClick).toHaveBeenCalledTimes(1);
   });
 
