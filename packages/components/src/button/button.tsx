@@ -40,7 +40,7 @@ export function Button({
 }: ButtonProps) {
   const renderProps = stylexRenderProps<BaseButton.State>(
     styles.base,
-    colorVariantStyles["primaryFilled"],
+    colorVariantStyles["filled"][color],
     sizeStyles[size],
     shapeStyles[shape],
     fullWidth && styles.fullWidth,
@@ -74,8 +74,8 @@ const styles = stylex.create({
   },
 });
 
-const colorVariantStyles = stylex.create({
-  primaryFilled: {
+const filledColorStyles = stylex.create({
+  primary: {
     color: "white",
     backgroundColor: {
       default: "blue",
@@ -86,7 +86,7 @@ const colorVariantStyles = stylex.create({
       ":active": `color-mix(in srgb, blue, white 30%)`,
     },
   },
-  neutralFilled: {
+  neutral: {
     color: "black",
     backgroundColor: {
       default: "lightGray",
@@ -97,7 +97,7 @@ const colorVariantStyles = stylex.create({
       ":active": `color-mix(in srgb, lightGray, black 30%)`,
     },
   },
-  negativeFilled: {
+  negative: {
     color: "white",
     backgroundColor: {
       default: "red",
@@ -109,6 +109,10 @@ const colorVariantStyles = stylex.create({
     },
   },
 });
+
+const colorVariantStyles = {
+  filled: filledColorStyles,
+};
 
 const sizeStyles = stylex.create({
   sm: {
