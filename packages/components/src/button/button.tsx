@@ -40,11 +40,14 @@ export function Button({
 }: ButtonProps) {
   const renderProps = stylexRenderProps<BaseButton.State>(
     styles.base,
+    colorVariantStyles["primaryFilled"],
     sizeStyles[size],
     shapeStyles[shape],
     fullWidth && styles.fullWidth,
-    (state) =>
+    (state) => [
+      state.disabled && styles.disabled,
       typeof sx === "function" ? sx({ ...state, color, shape, size, variant, fullWidth }) : sx,
+    ],
   );
 
   return <BaseButton {...props} {...renderProps} />;
@@ -59,13 +62,51 @@ const styles = stylex.create({
     borderColor: "transparent",
     flexShrink: 0,
     minWidth: 0,
-    color: "white",
-    backgroundColor: "black",
     whiteSpace: "nowrap",
     outlineOffset: "4px",
   },
   fullWidth: {
     width: "100%",
+  },
+  disabled: {
+    pointerEvents: "none",
+    opacity: 0.5,
+  },
+});
+
+const colorVariantStyles = stylex.create({
+  primaryFilled: {
+    color: "white",
+    backgroundColor: {
+      default: "blue",
+      ":hover": {
+        default: "null",
+        "@media (hover: hover)": `color-mix(in srgb, blue, white 20%)`,
+      },
+      ":active": `color-mix(in srgb, blue, white 30%)`,
+    },
+  },
+  neutralFilled: {
+    color: "black",
+    backgroundColor: {
+      default: "lightGray",
+      ":hover": {
+        default: "null",
+        "@media (hover: hover)": `color-mix(in srgb, lightGray, black 20%)`,
+      },
+      ":active": `color-mix(in srgb, lightGray, black 30%)`,
+    },
+  },
+  negativeFilled: {
+    color: "white",
+    backgroundColor: {
+      default: "red",
+      ":hover": {
+        default: "null",
+        "@media (hover: hover)": `color-mix(in srgb, red, white 20%)`,
+      },
+      ":active": `color-mix(in srgb, red, white 30%)`,
+    },
   },
 });
 

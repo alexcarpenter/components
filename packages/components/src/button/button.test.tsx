@@ -52,6 +52,7 @@ describe("Button", () => {
     expect(sx).toHaveBeenCalledWith({
       color: "primary",
       disabled: false,
+      fullWidth: false,
       shape: "default",
       size: "md",
       variant: "filled",
