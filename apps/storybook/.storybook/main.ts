@@ -19,7 +19,9 @@ const config: StorybookConfig = {
     mergeConfig(config, {
       plugins: [
         stylex({
-          useCSSLayers: true,
+          useCSSLayers: {
+            before: ["reset"],
+          },
           unstable_moduleResolution: {
             type: "commonJS",
             rootDir,
